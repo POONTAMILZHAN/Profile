@@ -1,0 +1,187 @@
+/* ====== Keyframes ====== */
+@keyframes float {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(40px, -30px) scale(1.08); }
+  66% { transform: translate(-20px, 20px) scale(.95); }
+}
+
+@keyframes gradientShift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+@keyframes scrollDot {
+  0% { opacity: 1; top: 6px; }
+  100% { opacity: 0; top: 22px; }
+}
+
+@keyframes pulseRing {
+  0% { transform: scale(1); opacity: 1; }
+  100% { transform: scale(1.4); opacity: 0; }
+}
+
+@keyframes fabPulse {
+  0%, 100% { transform: scale(1); opacity: .5; }
+  50% { transform: scale(1.2); opacity: .25; }
+}
+
+@keyframes typingDots {
+  0%, 60%, 100% { transform: translateY(0); opacity: .4; }
+  30% { transform: translateY(-4px); opacity: 1; }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(26px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes loadLetterIn {
+  0% { opacity: 0; transform: translateY(30px) rotateX(90deg); }
+  100% { opacity: 1; transform: translateY(0) rotateX(0); }
+}
+
+@keyframes loadBar {
+  0% { width: 0; }
+  100% { width: 100%; }
+}
+
+/* ====== Reveal on scroll ====== */
+.reveal {
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity .7s ease, transform .7s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ====== Loading screen ====== */
+.loader {
+  position: fixed;
+  inset: 0;
+  background: var(--bg-base);
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  transition: opacity .5s ease, visibility .5s ease;
+}
+.loader.hide {
+  opacity: 0;
+  visibility: hidden;
+}
+.loader-name {
+  display: flex;
+  font-family: var(--font-heading);
+  font-size: clamp(28px, 5vw, 52px);
+  font-weight: 700;
+  letter-spacing: 2px;
+  background: var(--accent-grad);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.loader-name .sp { width: 14px; display: inline-block; }
+.loader-name span {
+  display: inline-block;
+  opacity: 0;
+  animation: loadLetterIn .5s forwards;
+}
+.loader-name span:nth-child(1) { animation-delay: .05s; }
+.loader-name span:nth-child(2) { animation-delay: .10s; }
+.loader-name span:nth-child(3) { animation-delay: .15s; }
+.loader-name span:nth-child(4) { animation-delay: .20s; }
+.loader-name span:nth-child(5) { animation-delay: .25s; }
+.loader-name span:nth-child(6) { animation-delay: .30s; }
+.loader-name span:nth-child(7) { animation-delay: .35s; }
+.loader-name span:nth-child(8) { animation-delay: .40s; }
+.loader-name span:nth-child(9) { animation-delay: .45s; }
+.loader-name span:nth-child(10) { animation-delay: .50s; }
+.loader-name span:nth-child(11) { animation-delay: .55s; }
+.loader-name span:nth-child(12) { animation-delay: .60s; }
+.loader-name span:nth-child(13) { animation-delay: .65s; }
+.loader-name span:nth-child(14) { animation-delay: .70s; }
+.loader-name span:nth-child(15) { animation-delay: .75s; }
+
+.loader-bar {
+  width: 220px;
+  height: 3px;
+  background: var(--bg-glass-strong);
+  border-radius: 3px;
+  overflow: hidden;
+}
+.loader-fill {
+  height: 100%;
+  background: var(--accent-grad);
+  width: 0;
+  animation: loadBar 1.2s ease-out forwards;
+}
+
+/* ====== Custom cursor ====== */
+.cursor-dot, .cursor-ring {
+  position: fixed;
+  top: 0; left: 0;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  mix-blend-mode: screen;
+}
+.cursor-dot {
+  width: 8px; height: 8px;
+  background: #fff;
+  border-radius: 50%;
+  transition: transform .15s;
+}
+.cursor-ring {
+  width: 40px; height: 40px;
+  border: 1.5px solid rgba(139, 92, 246, 0.7);
+  border-radius: 50%;
+  transition: width .3s, height .3s, background .3s;
+  background: rgba(139, 92, 246, 0.08);
+  box-shadow: 0 0 20px rgba(139, 92, 246, 0.4);
+}
+.cursor-ring.hover {
+  width: 60px; height: 60px;
+  background: rgba(236, 72, 153, 0.14);
+  border-color: rgba(236, 72, 153, 0.9);
+  box-shadow: 0 0 30px rgba(236, 72, 153, 0.5);
+}
+/* Light-mode cursor — mix-blend-mode: screen washes out on light backgrounds,
+   so switch to a solid-color darker cursor that stays visible. */
+html[data-theme="light"] .cursor-dot {
+  mix-blend-mode: normal;
+  background: #4f46e5;
+  box-shadow: 0 0 10px rgba(79, 70, 229, 0.6);
+}
+html[data-theme="light"] .cursor-ring {
+  mix-blend-mode: normal;
+  background: rgba(79, 70, 229, 0.1);
+  border-color: rgba(79, 70, 229, 0.9);
+  box-shadow: 0 0 20px rgba(79, 70, 229, 0.3);
+}
+html[data-theme="light"] .cursor-ring.hover {
+  background: rgba(219, 39, 119, 0.15);
+  border-color: rgba(219, 39, 119, 1);
+  box-shadow: 0 0 24px rgba(219, 39, 119, 0.4);
+}
+@media (hover: none), (pointer: coarse) {
+  .cursor-dot, .cursor-ring { display: none; }
+}
+
+/* ====== Interactive particle canvas ====== */
+.particles-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.72;
+}
+html[data-theme="light"] .particles-bg { opacity: 1; }

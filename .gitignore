@@ -1,0 +1,23 @@
+# System
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Local server
+_light.html
+_light2.html
+_modal.html
+_scroll.html
+
+# Logs
+*.log
+
+# Dependencies (safety — this project has none)
+node_modules/
+package-lock.json
+yarn.lock
