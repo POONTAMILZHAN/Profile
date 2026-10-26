@@ -224,7 +224,7 @@ Please remove my personal details (`js/data.js`, `assets/profile.jpg`, resume fi
 ## 🙏 Credits
 
 Built by **[Poonthamizhan K](https://github.com/POONTAMILZHAN)** · Chennai, India
-Crafted with ❤ and a little bit of [Claude Code](https://claude.com/claude-code).
+Crafted with ❤
 
 ---
 
